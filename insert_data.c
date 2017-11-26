@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define LEN sizeof(linklist)    /* Á´±í³¤¶È */
+#define LEN sizeof(linklist)    /* é“¾è¡¨é•¿åº¦ */
 
-typedef struct linknode    /* ¶¨ÒåÁ´±í½á¹¹ */
+typedef struct linknode    /* å®šä¹‰é“¾è¡¨ç»“æ„ */
 {
 	float data;
 	struct linknode *next;
@@ -15,30 +15,30 @@ typedef struct linknode    /* ¶¨ÒåÁ´±í½á¹¹ */
 
 int n=0,i=0;
 
-linklist *initlist();    /* ³õÊ¼»¯Êı¾İÁ´±í */
-insertdata(linklist *head,float data,int serial);    /* head:±íÍ·;data:Êı¾İ;serial:ĞòºÅ; */
-void print(linklist *head);    /* Êä³ö±í */
+linklist *initlist();    /* åˆå§‹åŒ–æ•°æ®é“¾è¡¨ */
+insertdata(linklist *head,float data,int serial);    /* head:è¡¨å¤´;data:æ•°æ®;serial:åºå·; */
+void print(linklist *head);    /* è¾“å‡ºè¡¨ */
 
 int main()
 {
-	char c;    /* ÊÇ·ñ¼ÌĞø */
-	float data;    /* ²åÈë»òÒªÉ¾³ıµÄÊı¾İ*/
-	int serial;    /* ²åÈë»òÒªÉ¾³ıµÄĞòºÅ*/
+	char c;    /* æ˜¯å¦ç»§ç»­ */
+	float data;    /* æ’å…¥æˆ–è¦åˆ é™¤çš„æ•°æ®*/
+	int serial;    /* æ’å…¥æˆ–è¦åˆ é™¤çš„åºå·*/
 	linklist *head;    /* typedef struct linknode linklist;  */
 
-	head=initlist();    /* ³õÊ¼»¯Á´±í */
+	head=initlist();    /* åˆå§‹åŒ–é“¾è¡¨ */
 
-	print(head);    /* ´òÓ¡²åÈë»òÉ¾³ıÇ°µÄÁ´±íÊı¾İ */
+	print(head);    /* æ‰“å°æ’å…¥æˆ–åˆ é™¤å‰çš„é“¾è¡¨æ•°æ® */
 
 
-	insertdata(head,100,3);    /* ²åÈëÊı¾İ */
+	insertdata(head,100,3);    /* æ’å…¥æ•°æ® */
 
-#if(0)    /* ÕâÀï³ö´íÁË£¬×¢ÊÍµô±¸ÓÃ */
+#if(0)    /* è¿™é‡Œå‡ºé”™äº†ï¼Œæ³¨é‡Šæ‰å¤‡ç”¨ */
 	do{
-		printf("ÇëÊäÈëÒª²åÈëµÄ Êı¾İºÍĞòºÅ:\n");
+		printf("è¯·è¾“å…¥è¦æ’å…¥çš„ æ•°æ®å’Œåºå·:\n");
 		scanf("%f,%d",&data,&serial);
 		insertdata(head,data,serial);
-		printf("ÊÇ·ñ¼ÌĞø²åÈë(Y/N):\n");
+		printf("æ˜¯å¦ç»§ç»­æ’å…¥(Y/N):\n");
 		getchar();
 		getchar();
 		getchar();
@@ -52,21 +52,21 @@ int main()
 	return 0;
 }
 
-insertdata(linklist *head,float data,int serial)/* Á´±íÃû Êı¾İ ĞòºÅ */
+insertdata(linklist *head,float data,int serial)/* é“¾è¡¨å æ•°æ® åºå· */
 {
 	char c;
 	linklist *p,*temp,*p1;
 	temp=NULL;
 	p=head;
-	//	int i=0;    /* Ñ­»·±äÁ¿ */
-	if(p->next==NULL)	/* ±íÊÇ·ñÎª¿Õ±í */
+	//	int i=0;    /* å¾ªç¯å˜é‡ */
+	if(p->next==NULL)	/* è¡¨æ˜¯å¦ä¸ºç©ºè¡¨ */
 	{
-		printf("´Ë±íÎª¿Õ£¬ÊÇ·ñ×÷ÎªÊ×ÔªËØ?\n");
+		printf("æ­¤è¡¨ä¸ºç©ºï¼Œæ˜¯å¦ä½œä¸ºé¦–å…ƒç´ ?\n");
 		scanf("%c",&c);
 		if(c=='y'||c=='Y')
 		{
 			p1=(linklist *)malloc(LEN);
-			if(!p1)    /* ÊÇ·ñÉêÇë³É¹¦ */
+			if(!p1)    /* æ˜¯å¦ç”³è¯·æˆåŠŸ */
 			{
 				p->next=p1;
 				p1->data=data;
@@ -74,33 +74,33 @@ insertdata(linklist *head,float data,int serial)/* Á´±íÃû Êı¾İ ĞòºÅ */
 			}
 			else
 			{
-				printf("ÉêÇëÊ§°Ü!\n");
+				printf("ç”³è¯·å¤±è´¥!\n");
 				return 0;
 			}
 		}
 		else
 		{
-			printf("´Ë±íÎª¿Õ£¬²Ù×÷Ê§°Ü!\n");
+			printf("æ­¤è¡¨ä¸ºç©ºï¼Œæ“ä½œå¤±è´¥!\n");
 			return 0;
 		}
-		c=' ';    /* ³õÊ¼»¯c */
+		c=' ';    /* åˆå§‹åŒ–c */
 	}
 	else
 	{
 		if(serial<n && serial >0)    /*  */
 		{
 			p1=(linklist *)malloc(LEN);
-			if(p1)    /* ³É¹¦ÉêÇë */
+			if(p1)    /* æˆåŠŸç”³è¯· */
 			{
 				p1->data=data;
-				//p->next=temp;/* ÕâÀïĞ´´íÁË */
+				//p->next=temp;/* è¿™é‡Œå†™é”™äº† */
 				
-				while(i<serial)    /*½«Ö¸ÕëÒÆµ½serialÇ°Ãæ*/
+				while(i<serial)    /*å°†æŒ‡é’ˆç§»åˆ°serialå‰é¢*/
 				{
 					p=p->next;
 					i++;
 				}
-				if(p->next)    /* ÅĞ¶ÏÊÇ·ñÎª±íÎ² */
+				if(p->next)    /* åˆ¤æ–­æ˜¯å¦ä¸ºè¡¨å°¾ */
 				{
 					temp=p->next;
 					p->next=p1;
@@ -111,18 +111,18 @@ insertdata(linklist *head,float data,int serial)/* Á´±íÃû Êı¾İ ĞòºÅ */
 					p->next=p1;
 					p1->next=NULL;
 				}
-				printf("²åÈë³É¹¦!\n");
+				printf("æ’å…¥æˆåŠŸ!\n");
 			}
-			else    /* ÉêÇë¿Õ¼äÊ§°Ü */
+			else    /* ç”³è¯·ç©ºé—´å¤±è´¥ */
 			{
-				printf("ÉêÇëÊ§°Ü!\n");
+				printf("ç”³è¯·å¤±è´¥!\n");
 				return 0;
 			}
 		}
 		
 		else if(serial>n)
 		{
-			printf("ĞòÁĞºÅ³¬³ö±íµÄ³¤¶È!\n");
+			printf("åºåˆ—å·è¶…å‡ºè¡¨çš„é•¿åº¦!\n");
 		}
 	}
 	printf("\n");
@@ -132,13 +132,13 @@ insertdata(linklist *head,float data,int serial)/* Á´±íÃû Êı¾İ ĞòºÅ */
 linklist *initlist()
 {
 	linklist *p1,*p2,*head;
-	/* Á´±í³õÊ¼»¯ */
+	/* é“¾è¡¨åˆå§‹åŒ– */
 	p1=p2=(linklist *)malloc(LEN);
 	head=NULL;
 	
 	do{
 		p1=(linklist *)malloc(LEN);
-		printf("ÇëÊäÈëµÚ%d¸ö²»Îª0µÄÊı:",n+1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªä¸ä¸º0çš„æ•°:",n+1);
 		scanf("%f",&p1->data);
 		p1->next=NULL;
 		//if(((!p1->data - (int)p1->data) || p1->data<0) &&(0==n))
@@ -148,7 +148,7 @@ linklist *initlist()
 			{
 				do
 				{
-					printf("ÇëÖØĞÂÊäÈëµÚ%d¸öÊı:",n+1);
+					printf("è¯·é‡æ–°è¾“å…¥ç¬¬%dä¸ªæ•°:",n+1);
 					scanf("%f",&p1->data);
 					//}while((p1->data - (int)p1->data)|| p1->data<1);
 				}while(p1->data==0);
@@ -167,14 +167,14 @@ linklist *initlist()
 		n+=1;
 	}
 	while(p1->data);
-	printf("Á´±í´´½¨³É¹¦!\n");
+	printf("é“¾è¡¨åˆ›å»ºæˆåŠŸ!\n");
 	return head;
 }
 void print(linklist *head)
 {
 	linklist *p;
-	p=head->next;    /* ±íÍ·²»´òÓ¡ */
-	if(head->next)
+	p=head->next;    /* è¡¨å¤´ä¸æ‰“å° */
+	if(head->next)    /* å¯ä»¥ç›´æ¥å†™æˆ  if(p) */
 	{
 		while(p->next)
 		{
@@ -184,6 +184,6 @@ void print(linklist *head)
 	}
 	else
 	{
-		printf("±íÎª¿Õ!\n");
+		printf("è¡¨ä¸ºç©º!\n");
 	}
 }
